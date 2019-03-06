@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class CharacterMotor : NetworkBehaviour {
+public class CharacterMotor : NetworkBehaviour
+{
 
 	/*
 	 *Mémo animation Condition
@@ -32,100 +33,131 @@ public class CharacterMotor : NetworkBehaviour {
 	CapsuleCollider playerCollider;
 
 
+	void Start()
+	{
+		if (hasAuthority == false)
+		{
+			return;
+		}
 
-	void Start () {
-		animations = GetComponent<Animator>(); 
+		Camera.main.transform.position = this.transform.position - this.transform.forward * 2 + this.transform.up * 2;
+		Camera.main.transform.Rotate(25, 0, 0);
+		Camera.main.transform.parent = this.transform;
+
+		animations = GetComponent<Animator>();
 		playerCollider = gameObject.GetComponent<CapsuleCollider>();
 	}
 
 	bool isGrounded()
 	{
-		return Physics.CheckCapsule (playerCollider.bounds.center, new Vector3 (playerCollider.bounds.center.x, playerCollider.bounds.min.y - 0.1f, playerCollider.bounds.center.z), 0.6f);
+		return Physics.CheckCapsule(playerCollider.bounds.center, new Vector3(playerCollider.bounds.center.x, playerCollider.bounds.min.y - 0.1f, playerCollider.bounds.center.z), 0.6f);
 	}
 
-	void Update () {
+	void Update()
+	{
+		if (hasAuthority == false)
+		{
+			return;
+		}
 
-		//Si le joueur avance
-		if (Input.GetKey(inputFront) && !Input.GetKey(KeyCode.LeftShift)) 
+
+		if (Input.GetKey(inputFront) && !Input.GetKey(KeyCode.LeftShift))
 		{
 			//Joue l'animation de marche
-			animations.SetInteger("condition", 1);
-			transform.Translate(0, 0, walkSpeed * Time.deltaTime);
+			this.animations.SetInteger("condition", 1);
+			this.transform.Translate(0, 0, walkSpeed * Time.deltaTime);
 		}
 
 		//Si le joueur arrête d'avancer
-		if (Input.GetKeyUp(inputFront)) 
+		if (Input.GetKeyUp(inputFront))
 		{
 			//Le personnage arrête de marcher
-			animations.SetInteger("condition", 0);
-			transform.Translate(0, 0, 0);
+			this.animations.SetInteger("condition", 0);
+			this.transform.Translate(0, 0, 0);
 		}
 
 		//Si le joueur cours
-		if (Input.GetKey(inputFront) && Input.GetKey(KeyCode.LeftShift)) 
+		if (Input.GetKey(inputFront) && Input.GetKey(KeyCode.LeftShift))
 		{
 			//Le personnage cours
-			animations.SetInteger ("condition", 2);
-			transform.Translate(0, 0, runSpeed * Time.deltaTime);
+			this.animations.SetInteger("condition", 2);
+			this.transform.Translate(0, 0, runSpeed * Time.deltaTime);
 		}
 
 		//Si le joueur cours plus
-		if (!Input.GetKey(inputFront) && Input.GetKey(KeyCode.LeftShift)) 
+		if (!Input.GetKey(inputFront) && Input.GetKey(KeyCode.LeftShift))
 		{
 			//Le personnage cours
-			animations.SetInteger ("condition", 0);
+			this.animations.SetInteger("condition", 0);
 		}
 
-
 		//Si le joueur recule
-		if (Input.GetKey(inputBack) && !Input.GetKey(inputFront) && !Input.GetKey(inputRight) && !Input.GetKey(inputLeft)) 
+		if (Input.GetKey(inputBack) && !Input.GetKey(inputFront) && !Input.GetKey(inputRight) && !Input.GetKey(inputLeft))
 		{
 			//Le personnage recule
-			animations.SetInteger ("condition", 5);
-			transform.Translate(0, 0, -(walkSpeed / 2) * Time.deltaTime);
+			this.animations.SetInteger("condition", 5);
+			this.transform.Translate(0, 0, -(walkSpeed / 2) * Time.deltaTime);
 
 		}
 
 		//Si le personnage arrête de reculer
-		if (Input.GetKeyUp(inputBack) && !Input.GetKey(inputFront)) 
+		if (Input.GetKeyUp(inputBack) && !Input.GetKey(inputFront))
 		{
 			//Le personnage recule
-			animations.SetInteger ("condition", 0);
-		}
-
-		//Rotation à gauche
-		if (Input.GetKey (inputLeft) && !Input.GetKey (inputFront)) {
-			//Animation du personnage(rotation)
-			//animations.SetInteger ("condition", 4);
-			transform.Rotate (0, -turnSpeed * Time.deltaTime, 0);
-		} 
-		else if (Input.GetKey(inputLeft))
-			{
-				transform.Rotate (0, -turnSpeed * Time.deltaTime, 0);
-			}
-
-		//Si on arrête de tourner à gauche
-		if (Input.GetKeyUp(inputLeft)) 
-		{
-			//Le personnage arrête de marcher
-			//sanimations.SetInteger("condition", 0);
+			this.animations.SetInteger("condition", 0);
 		}
 
 		//Rotation à droite
-		if (Input.GetKey (inputRight) && !Input.GetKey (inputFront)) {
+		if (Input.GetKey(inputRight) && !Input.GetKey(inputFront))
+		{
 			//animations.SetInteger ("condition", 3);
-			transform.Rotate (0, turnSpeed * Time.deltaTime, 0);
-		} 
+			this.transform.Rotate(0, turnSpeed * Time.deltaTime, 0);
+		}
 		else if (Input.GetKey(inputRight))
-			{
-				transform.Rotate (0, turnSpeed * Time.deltaTime, 0);
-			}
+		{
+			this.transform.Rotate(0, turnSpeed * Time.deltaTime, 0);
+		}
 
 		//Si on arrête de tourner à droite
-		if (Input.GetKeyUp(inputRight)) 
+		if (Input.GetKeyUp(inputRight))
 		{
 			//Le personnage arrête de pivoter
 			//animations.SetInteger("condition", 0);
 		}
+
+		//Rotation à gauche
+		if (Input.GetKey(inputLeft) && !Input.GetKey(inputFront))
+		{
+			//Animation du personnage(rotation)
+			//animations.SetInteger ("condition", 4);
+			this.transform.Rotate(0, -turnSpeed * Time.deltaTime, 0);
+		}
+		else if (Input.GetKey(inputLeft))
+		{
+			this.transform.Rotate(0, -turnSpeed * Time.deltaTime, 0);
+		}
+
+		//Si on arrête de tourner à gauche
+		if (Input.GetKeyUp(inputLeft))
+		{
+			//Le personnage arrête de marcher
+			//sanimations.SetInteger("condition", 0);
+		}
+	}
+
+	public void setSpeed(float f)
+	{
+		walkSpeed *= f;
+		runSpeed *= f;
+		turnSpeed *= f;
+
+
+	}
+
+	public void setBackSpeed()
+	{
+		walkSpeed = walkSpeed;
+		runSpeed = runSpeed;
+		turnSpeed = turnSpeed;
 	}
 }

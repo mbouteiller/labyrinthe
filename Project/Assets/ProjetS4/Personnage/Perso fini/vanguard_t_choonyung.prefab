@@ -940,6 +940,7 @@ GameObject:
   - component: {fileID: 54902895039342624}
   - component: {fileID: 136135329874577724}
   - component: {fileID: 114874011985732550}
+  - component: {fileID: 114683230038571762}
   m_Layer: 0
   m_Name: vanguard_t_choonyung
   m_TagString: Untagged
@@ -2044,6 +2045,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114683230038571762
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842320263635742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4d56077b9244fb681f2ab667621552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 0
+  runSpeed: 0
+  turnSpeed: 0
+  inputFront: 
+  inputBack: 
+  inputLeft: 
+  inputRight: 
+  jumpSpeed: {x: 0, y: 0, z: 0}
 --- !u!114 &114874011985732550
 MonoBehaviour:
   m_ObjectHideFlags: 1

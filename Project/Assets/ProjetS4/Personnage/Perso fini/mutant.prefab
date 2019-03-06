@@ -597,6 +597,8 @@ GameObject:
   - component: {fileID: 136195561734165382}
   - component: {fileID: 114291988317485300}
   - component: {fileID: 114480527031414452}
+  - component: {fileID: 114761524189651416}
+  - component: {fileID: 114325954750795656}
   m_Layer: 0
   m_Name: mutant
   m_TagString: Untagged
@@ -943,13 +945,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1146993434088722}
-  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 2, z: -1.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4640436607205858}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4663451785473612
 Transform:
   m_ObjectHideFlags: 1
@@ -1268,6 +1270,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f647218d2841b054bb76d1d0ab0588fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SyncVarDirtyBits: 0
+  m_LastSendTime: 0
+  m_SyncVarGuard: 0
+  m_MyView: {fileID: 0}
+  animations: {fileID: 0}
   walkSpeed: 4
   runSpeed: 7
   turnSpeed: 200
@@ -1276,6 +1283,18 @@ MonoBehaviour:
   inputLeft: q
   inputRight: d
   jumpSpeed: {x: 0, y: 5, z: 0}
+  playerCollider: {fileID: 0}
+--- !u!114 &114325954750795656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977624974465002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569c960d8dd44424bac83572c9c6453c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114480527031414452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1308,6 +1327,25 @@ MonoBehaviour:
     i15: 181
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &114761524189651416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977624974465002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4d56077b9244fb681f2ab667621552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 4
+  runSpeed: 7
+  turnSpeed: 150
+  inputFront: z
+  inputBack: s
+  inputLeft: q
+  inputRight: d
+  jumpSpeed: {x: 0, y: 0, z: 0}
 --- !u!136 &136195561734165382
 CapsuleCollider:
   m_ObjectHideFlags: 1
