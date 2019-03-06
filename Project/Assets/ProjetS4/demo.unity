@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FullRandom: 1
+<<<<<<< HEAD
   Floor: {fileID: 1535802299515102, guid: 60db6efef92de40b4b6e6c144ada3519, type: 3}
   Wall: {fileID: 1502726423124506, guid: 34971630373244b86a7294f7bb2d5598, type: 3}
   Check: {fileID: 142476, guid: f3f97a2401feba4479a301d6181e9da6, type: 3}
@@ -165,6 +166,16 @@ MonoBehaviour:
   Object1: {fileID: 1948965863742440, guid: affae23b96eee49e5990c5c32f4c6b08, type: 3}
   Object2: {fileID: 1948965863742440, guid: affae23b96eee49e5990c5c32f4c6b08, type: 3}
   Object3: {fileID: 1948965863742440, guid: affae23b96eee49e5990c5c32f4c6b08, type: 3}
+=======
+  Floor: {fileID: 1535802299515102, guid: 60db6efef92de40b4b6e6c144ada3519, type: 2}
+  Wall: {fileID: 1502726423124506, guid: 34971630373244b86a7294f7bb2d5598, type: 2}
+  Check: {fileID: 142476, guid: f3f97a2401feba4479a301d6181e9da6, type: 2}
+  RedBase: {fileID: 1152353098074430, guid: b3087b7daf8044d1a8e98105f935a65e, type: 2}
+  BlueBase: {fileID: 1781931726901696, guid: 9b313a1cea40940059bb9986db2f322c, type: 2}
+  Object1: {fileID: 1948965863742440, guid: affae23b96eee49e5990c5c32f4c6b08, type: 2}
+  Object2: {fileID: 1948965863742440, guid: affae23b96eee49e5990c5c32f4c6b08, type: 2}
+  Object3: {fileID: 1948965863742440, guid: affae23b96eee49e5990c5c32f4c6b08, type: 2}
+>>>>>>> b97ad2fa06999c625f16e6d06e4b6fffb2fe408c
   Rows: 5
   Columns: 5
   CellWidth: 4
