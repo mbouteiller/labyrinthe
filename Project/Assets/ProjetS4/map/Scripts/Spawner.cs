@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.Networking;
 
 //<summary>
 //Game object, that creates maze and instantiates it in scene
 //</summary>
-public class Spawner : NetworkBehaviour {
+public class Spawner : MonoBehaviour {
 
 	public bool FullRandom = false;
 
@@ -26,7 +25,7 @@ public class Spawner : NetworkBehaviour {
 
 	void Start () {
 		MazeGenerator = new DivisionMaze (Rows, Columns);
-		MazeGenerator.GenerateMaze();
+		MazeGenerator.GenerateMaze ();
 
 		for (int row = 0; row < Rows; row++) {
 			for(int column = 0; column < Columns; column++){
