@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Player : MonoBehaviour {
+public class Player : NetworkBehaviour {
 
 
 	//Animation du perso
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour {
 		//Si le joueur cours plus
 		if (!Input.GetKey(inputFront) && Input.GetKey(KeyCode.LeftShift)) 
 		{
-			//Le personnage cours
+			//Le personnage cours plus
 			animations.SetInteger ("Conditions", 0);
 		}
 
@@ -78,24 +79,18 @@ public class Player : MonoBehaviour {
 		}
 
 		//Rotation à gauche
-		if (Input.GetKey (inputLeft) && !Input.GetKey (inputFront)) {
+		if (Input.GetKey (inputLeft))
+		{
 			//Animation du personnage(rotation)
 			//animations.SetInteger ("Conditions", 4);
 			transform.Rotate (0, -turnSpeed * Time.deltaTime, 0);
 		} 
-		else if (Input.GetKey(inputLeft))
-		{
-			transform.Rotate (0, -turnSpeed * Time.deltaTime, 0);
-		}
 
 		//Rotation à droite
-		if (Input.GetKey (inputRight) && !Input.GetKey (inputFront)) {
+		if (Input.GetKey (inputRight)) 
+		{
 			//animations.SetInteger ("Conditions", 3);
 			transform.Rotate (0, turnSpeed * Time.deltaTime, 0);
 		} 
-		else if (Input.GetKey(inputRight))
-		{
-			transform.Rotate (0, turnSpeed * Time.deltaTime, 0);
-		}
 	}
 }
