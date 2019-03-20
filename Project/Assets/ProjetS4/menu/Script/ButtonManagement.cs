@@ -11,6 +11,7 @@ public class ButtonManagement : MonoBehaviour {
 	{
 		GameObject tmp;
 		tmp = Instantiate (GameControllerWindows, new Vector3 (0, 0, 0), Quaternion.identity);
+		tmp.transform.localScale = new Vector3 (Screen.width / 470, Screen.height / 470, 1);
 		tmp.transform.SetParent (CanvasMenu.transform);
 	}
 
